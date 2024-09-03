@@ -1,21 +1,15 @@
 let boundary;
-let ray;
+let particle;
 function setup() {
   createCanvas(400, 400);
-  boundary = new Boundary(300, 100, 300, 300);
-  ray = new Ray(100, 200);
+  boundary = new Boundary(100, 100, 300, 300);
+  particle = new Particle();
 }
 
 function draw() {
   background(0);
   boundary.show();
-  ray.show();
-  ray.lookAtPoint(mouseX, mouseY);
-
-  let point = ray.cast(boundary);
-
-  if (point) {
-    fill(255, 0, 255);
-    ellipse(point.x, point.y, 10, 10);
-  }
+  particle.show();
+  particle.updatePosition(mouseX, mouseY);
+  particle.cast(boundary);
 }

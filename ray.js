@@ -1,7 +1,7 @@
 class Ray {
-  constructor(x, y) {
-    this.pos = createVector(x, y);
-    this.dir = createVector(1, 0);
+  constructor(pos, angle) {
+    this.pos = pos;
+    this.dir = p5.Vector.fromAngle(angle);
   }
 
   lookAtPoint(x, y) {
