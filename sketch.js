@@ -15,5 +15,5 @@ function draw() {
 
   particle.show();
   particle.updatePosition(mouseX, mouseY);
-  particle.cast(walls[0]);
+  particle.cast(walls);
 }

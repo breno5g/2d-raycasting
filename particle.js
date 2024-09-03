@@ -12,12 +12,26 @@ class Particle {
     this.pos.set(x, y);
   }
 
-  cast(boundary) {
+  cast(walls) {
     for (let ray of this.rays) {
-      const point = ray.cast(boundary);
+      let closest = null;
+      let record = Infinity;
 
-      if (point) {
-        line(this.pos.x, this.pos.y, point.x, point.y);
+      for (let wall of walls) {
+        const point = ray.cast(wall);
+
+        if (point) {
+          const dist = p5.Vector.dist(this.pos, point);
+
+          if (dist < record) {
+            record = dist;
+            closest = point;
+          }
+        }
+      }
+
+      if (closest) {
+        line(this.pos.x, this.pos.y, closest.x, closest.y);
       }
     }
   }
