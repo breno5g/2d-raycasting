@@ -16,6 +16,11 @@ class Boundary {
       boundaries.push(new Boundary(x1, y1, x2, y2));
     }
 
+    boundaries.push(new Boundary(0, 0, width, 0));
+    boundaries.push(new Boundary(width, 0, width, height));
+    boundaries.push(new Boundary(width, height, 0, height));
+    boundaries.push(new Boundary(0, height, 0, 0));
+
     return boundaries;
   }
 

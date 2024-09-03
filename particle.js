@@ -38,7 +38,7 @@ class Particle {
 
   show() {
     fill(255);
-    ellipse(this.pos.x, this.pos.y, 4);
+    ellipse(this.pos.x, this.pos.y, 1);
 
     for (let ray of this.rays) {
       ray.show();
