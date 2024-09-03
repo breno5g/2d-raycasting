@@ -1,15 +1,19 @@
-let boundary;
+let walls = [];
 let particle;
 function setup() {
   createCanvas(400, 400);
-  boundary = new Boundary(100, 100, 300, 300);
+  // boundary = new Boundary(100, 100, 300, 300);
   particle = new Particle();
+  walls = Boundary.createRandom(5);
 }
 
 function draw() {
   background(0);
-  boundary.show();
+  walls.forEach((wall) => {
+    wall.show();
+  });
+
   particle.show();
   particle.updatePosition(mouseX, mouseY);
-  particle.cast(boundary);
+  particle.cast(walls[0]);
 }
