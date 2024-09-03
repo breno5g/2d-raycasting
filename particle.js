@@ -3,7 +3,7 @@ class Particle {
     this.pos = createVector(width / 2, height / 2);
     this.rays = [];
 
-    for (let angle = 0; angle < 360; angle += 3) {
+    for (let angle = 0; angle < 360; angle += 5) {
       this.rays.push(new Ray(this.pos, radians(angle)));
     }
   }
@@ -32,13 +32,15 @@ class Particle {
 
       if (closest) {
         line(this.pos.x, this.pos.y, closest.x, closest.y);
+        // fill(255, 0, 0);
+        // ellipse(closest.x, closest.y, 10, 10);
       }
     }
   }
 
   show() {
-    fill(255);
-    ellipse(this.pos.x, this.pos.y, 4);
+    // fill(255);
+    // ellipse(this.pos.x, this.pos.y, 4);
 
     for (let ray of this.rays) {
       ray.show();
