@@ -18,10 +18,10 @@ function draw() {
   });
 
   particle.show();
-  // particle.updatePosition(mouseX, mouseY);
-  particle.updatePosition(noise(xoff) * width, noise(yoff) * height);
+  particle.updatePosition(mouseX, mouseY);
+  // particle.updatePosition(noise(xoff) * width, noise(yoff) * height);
   particle.cast(walls);
 
-  xoff += 0.01;
-  yoff += 0.01;
+  // xoff += 0.01;
+  // yoff += 0.01;
 }

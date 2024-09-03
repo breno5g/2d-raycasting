@@ -3,7 +3,7 @@ class Particle {
     this.pos = createVector(width / 2, height / 2);
     this.rays = [];
 
-    for (let angle = 0; angle < 360; angle += 5) {
+    for (let angle = 0; angle < 360; angle += 3) {
       this.rays.push(new Ray(this.pos, radians(angle)));
     }
   }
@@ -38,7 +38,7 @@ class Particle {
 
   show() {
     fill(255);
-    ellipse(this.pos.x, this.pos.y, 1);
+    ellipse(this.pos.x, this.pos.y, 4);
 
     for (let ray of this.rays) {
       ray.show();
