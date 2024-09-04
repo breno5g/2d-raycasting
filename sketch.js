@@ -36,7 +36,7 @@ function draw() {
 
   particle.show();
   particle.updatePosition(mouseX, mouseY);
-  particle.updateAmount(slider.value());
+  particle.updateAmount(37 - slider.value());
   // particle.updatePosition(noise(xoff) * width, noise(yoff) * height);
   particle.cast(walls);
 
