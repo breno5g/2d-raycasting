@@ -3,9 +3,18 @@ class Particle {
     this.pos = createVector(width / 2, height / 2);
     this.rays = [];
 
-    for (let angle = 0; angle < 360; angle += 1) {
+    for (let angle = 0; angle < 360; angle += this.amount) {
       this.rays.push(new Ray(this.pos, radians(angle)));
     }
+  }
+
+  updateAmount(amount) {
+    let rays = [];
+    for (let angle = 0; angle < 360; angle += amount) {
+      rays.push(new Ray(this.pos, radians(angle)));
+    }
+
+    this.rays = rays;
   }
 
   updatePosition(x, y) {

@@ -18,10 +18,11 @@ function initCanvas() {
   createCanvas(screenWidth - 50, screenHeight - 50);
 }
 
+let slider;
+
 function setup() {
   initCanvas();
-  // createCanvas(400, 400);
-  // boundary = new Boundary(100, 100, 300, 300);
+  slider = createSlider(1, 36, 1, 1);
   particle = new Particle();
   walls = Boundary.createRandom(5);
 }
@@ -35,6 +36,7 @@ function draw() {
 
   particle.show();
   particle.updatePosition(mouseX, mouseY);
+  particle.updateAmount(slider.value());
   // particle.updatePosition(noise(xoff) * width, noise(yoff) * height);
   particle.cast(walls);
 
