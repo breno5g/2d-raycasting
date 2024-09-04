@@ -23,7 +23,7 @@ function setup() {
   // createCanvas(400, 400);
   // boundary = new Boundary(100, 100, 300, 300);
   particle = new Particle();
-  walls = Boundary.createRandom(10);
+  walls = Boundary.createRandom(5);
 }
 
 function draw() {
