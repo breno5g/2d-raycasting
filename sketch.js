@@ -4,6 +4,22 @@ let particle;
 let xoff = 0;
 let yoff = 10000;
 
+let checkbox;
+
+const createCheckboxToEnableNoiseMovement = () => {
+  const label = document.createElement('label');
+  label.innerHTML = 'Enable noise movement';
+  checkbox = document.createElement('input');
+  checkbox.type = 'checkbox';
+
+  label.appendChild(checkbox);
+  label.style.display = 'flex';
+  label.style.margin = '0 10px 0 10px';
+  label.style.gap = '10px';
+
+  document.body.appendChild(label);
+};
+
 function initCanvas() {
   let screenWidth = window.innerWidth;
   let screenHeight = window.innerHeight;
@@ -25,6 +41,7 @@ function setup() {
   slider = createSlider(1, 36, 1, 1);
   particle = new Particle();
   walls = Boundary.createRandom(5);
+  createCheckboxToEnableNoiseMovement();
 }
 
 function draw() {
@@ -35,11 +52,14 @@ function draw() {
   });
 
   particle.show();
-  particle.updatePosition(mouseX, mouseY);
-  particle.updateAmount(37 - slider.value());
-  // particle.updatePosition(noise(xoff) * width, noise(yoff) * height);
   particle.cast(walls);
+  particle.updateAmount(37 - slider.value());
 
-  // xoff += 0.01;
-  // yoff += 0.01;
+  if (checkbox.checked) {
+    particle.updatePosition(noise(xoff) * width, noise(yoff) * height);
+    xoff += 0.01;
+    yoff += 0.01;
+  } else {
+    particle.updatePosition(mouseX, mouseY);
+  }
 }
